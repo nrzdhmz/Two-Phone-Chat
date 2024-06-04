@@ -1,0 +1,36 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: #111B21;
+}
+
+#root{
+  display: flex;
+  justify-content: center;
+}
+.container{
+  display: flex;
+  width: 50%;
+  gap: 100px;
+  justify-content: center;
+  height: 100vh;
+}
+.phone{
+  width: 320px;
+  height: auto;
+  margin: 30px 0;
+  border-radius: 30px;
+  outline: rgb(39, 39, 39) 5px solid;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-image: url(../images/newbg.jpg);
+  display: flex;
+  flex-direction: column;
+}

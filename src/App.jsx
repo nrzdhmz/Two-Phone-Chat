@@ -1,12 +1,12 @@
 import React from 'react'
+import Phone from './pages/Phone'
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const App = () => {
   return (
     <div className="container">
-      <div className="phone">
-        SLAM
-      </div>
-      <div className="phone"></div>
+      <Phone/>
+      <Phone/>
     </div>      
   )
 }

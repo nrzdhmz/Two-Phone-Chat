@@ -12,6 +12,7 @@ const Footer = ({ phoneId, chatMessages, sendMessage, isTyping }) => {
     if (inputValue) {
       sendMessage(inputValue); 
       setInputValue('');
+      isTyping(false)
     }
   };
 

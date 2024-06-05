@@ -76,6 +76,15 @@ header .bottom .left {
   gap: 10px;
   align-items: center;
 }
+header .bottom .left .username-container {
+  display: flex;
+  flex-direction: column;
+}
+header .bottom .left .username-container .status {
+  font-size: 10px;
+  font-weight: 300;
+  color: #9ea3a4;
+}
 header .bottom .left .avatar-container {
   display: flex;
   align-items: center;
@@ -142,22 +151,24 @@ main {
   overflow-y: auto;
   height: 100%;
   justify-content: flex-end;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
 }
 main .chat {
   font-size: 14px;
   border-radius: 10px;
-  padding: 6px 8px 6px;
+  padding: 6px 75px 6px 8px;
   width: -moz-fit-content;
   width: fit-content;
   display: flex;
   max-width: 90%;
-  gap: 10px;
+  position: relative;
 }
 main .chat .timestamp {
+  bottom: 5px;
+  right: 5px;
+  position: absolute;
   font-size: 10px;
   font-weight: 300;
-  margin-top: 8px;
   align-self: flex-end;
   display: flex;
   gap: 3px;

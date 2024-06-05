@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 
-const Footer = ({ phoneId, chatMessages, sendMessage }) => {
+const Footer = ({phoneId,chatMessages,sendMessage,isTyping}) => {
+
   const [inputValue, setInputValue] = useState('');
 
-  const InputValueSaver = (event) => {
+  const inputValueChanged = (event) => {
     setInputValue(event.target.value);
+    isTyping(event.target.value.length > 0); 
   };
-
   const handleSendMessage = () => {
     if (inputValue) {
       sendMessage(inputValue);
       setInputValue('');
     }
   };
-
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleSendMessage();
@@ -33,12 +33,14 @@ const Footer = ({ phoneId, chatMessages, sendMessage }) => {
             }}
           >
             {message.message}
-            <div className="timestamp"
+            <div
+              className="timestamp"
               style={{
                 color: message.id === phoneId ? '#77AA97' : '#848889',
               }}
-            >{message.timestamp}
-            <i className="fa-solid fa-check"></i>
+            >
+              {message.timestamp}
+              <i className="fa-solid fa-check"></i>
             </div>
           </div>
         ))}
@@ -48,8 +50,8 @@ const Footer = ({ phoneId, chatMessages, sendMessage }) => {
         <input
           type="text"
           value={inputValue}
-          onChange={InputValueSaver}
-          onKeyPress={handleKeyPress} 
+          onChange={inputValueChanged}
+          onKeyPress={handleKeyPress}
         />
         {inputValue ? (
           <button onClick={handleSendMessage}>

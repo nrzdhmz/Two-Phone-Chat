@@ -2,36 +2,18 @@ import React, { useState, useEffect } from 'react';
 import avatar from '../assets/images/default.png';
 
 const Header = ({ phoneId }) => {
-  const [batteryLevel, setBatteryLevel] = useState(null);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [username, setUsername] = useState('');
-
   useEffect(() => {
-    const getBatteryStatus = async () => {
-      try {
-        const battery = await navigator.getBattery();
-        setBatteryLevel((battery.level * 100).toFixed(0) + '%');
-        battery.addEventListener('levelchange', () => {
-          setBatteryLevel((battery.level * 100).toFixed(0) + '%');
-        });
-      } catch (error) {
-        console.error('error');
-        setBatteryLevel('?');
-      }
-    };
-    getBatteryStatus();
     const updateTime = () => {
       setCurrentTime(new Date());
     };
-    const intervalId = setInterval(updateTime, 20000);
-
+    const intervalId = setInterval(updateTime, 1000);
     return () => clearInterval(intervalId);
   }, []);
-
   useEffect(() => {
     setUsername(phoneId === 1 ? 'Hamza' : 'Ismayil');
   }, [phoneId]);
-
   const formatTime = (date) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
@@ -43,7 +25,7 @@ const Header = ({ phoneId }) => {
         <div className="systemInfo">
           <i className="fa-solid fa-signal"></i>
           <i className="fa-solid fa-wifi"></i>
-          <div className="battery">{batteryLevel !== null ? batteryLevel : 'Loading...'}</div>
+          <div className="battery">79%</div>
         </div>
       </div> 
       <div className="bottom">
@@ -52,7 +34,10 @@ const Header = ({ phoneId }) => {
           <div className="avatar-container">
             <img src={avatar} alt="avatar" />
           </div>
-          <div className="username">{username}</div>
+          <div className="username-container">
+            <p>{username}</p>
+            <p className='status'>online</p>
+          </div>
         </div>
         <div className="right">
           <i className="fa-solid fa-video"></i>

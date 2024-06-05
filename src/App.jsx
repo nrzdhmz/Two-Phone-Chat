@@ -13,10 +13,24 @@ const App = () => {
     }
   };
 
+  const isTyping = (isTyping) =>{
+    console.log(isTyping);
+  }
+
   return (
     <div className="container">
-      <Phone id={1} chatMessages={chatMessages} sendMessage={(message) => sendMessage(1, message)} />
-      <Phone id={2} chatMessages={chatMessages} sendMessage={(message) => sendMessage(2, message)} />
+      <Phone 
+      id={1} 
+      chatMessages={chatMessages} 
+      sendMessage={(message) => sendMessage(1, message)}
+      isTyping={isTyping}
+      />
+      <Phone 
+      id={2} 
+      chatMessages={chatMessages} 
+      sendMessage={(message) => sendMessage(2, message)}
+      isTyping={isTyping}
+      />
     </div>
   );
 };

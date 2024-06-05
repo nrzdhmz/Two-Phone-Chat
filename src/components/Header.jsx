@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import avatar from '../assets/images/default.png';
 
-const Header = ({ phoneId }) => {
+const Header = ({ phoneId, typingData }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [username, setUsername] = useState('');
+
   useEffect(() => {
     const updateTime = () => {
       setCurrentTime(new Date());
@@ -11,12 +12,17 @@ const Header = ({ phoneId }) => {
     const intervalId = setInterval(updateTime, 1000);
     return () => clearInterval(intervalId);
   }, []);
+
   useEffect(() => {
     setUsername(phoneId === 1 ? 'Hamza' : 'Ismayil');
   }, [phoneId]);
+
   const formatTime = (date) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
+
+  // Reverse logic: if phoneId is 1, check typing status of phoneId 2, and vice versa
+  const isTyping = phoneId === 1 ? typingData[2] : typingData[1];
 
   return (
     <header className="header">
@@ -27,7 +33,7 @@ const Header = ({ phoneId }) => {
           <i className="fa-solid fa-wifi"></i>
           <div className="battery">79%</div>
         </div>
-      </div> 
+      </div>
       <div className="bottom">
         <div className="left">
           <i className="fa-solid fa-chevron-left"></i>
@@ -36,7 +42,7 @@ const Header = ({ phoneId }) => {
           </div>
           <div className="username-container">
             <p>{username}</p>
-            <p className='status'>online</p>
+            <p className='status'>{isTyping ? 'typing...' : 'online'}</p>
           </div>
         </div>
         <div className="right">
@@ -46,6 +52,6 @@ const Header = ({ phoneId }) => {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

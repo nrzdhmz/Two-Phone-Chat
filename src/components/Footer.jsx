@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 
-const Footer = ({phoneId,chatMessages,sendMessage,isTyping}) => {
-
+const Footer = ({ phoneId, chatMessages, sendMessage, isTyping }) => {
   const [inputValue, setInputValue] = useState('');
 
   const inputValueChanged = (event) => {
     setInputValue(event.target.value);
-    isTyping(event.target.value.length > 0); 
+    isTyping(event.target.value.length > 0);
   };
+
   const handleSendMessage = () => {
     if (inputValue) {
-      sendMessage(inputValue);
+      sendMessage(phoneId, inputValue); 
       setInputValue('');
     }
   };
+
   const handleKeyPress = (event) => {
     if (event.key === 'Enter') {
       handleSendMessage();

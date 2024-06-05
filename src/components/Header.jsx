@@ -21,7 +21,6 @@ const Header = ({ phoneId, typingData }) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
-  // Reverse logic: if phoneId is 1, check typing status of phoneId 2, and vice versa
   const isTyping = phoneId === 1 ? typingData[2] : typingData[1];
 
   return (

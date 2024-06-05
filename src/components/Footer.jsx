@@ -10,7 +10,7 @@ const Footer = ({ phoneId, chatMessages, sendMessage, isTyping }) => {
 
   const handleSendMessage = () => {
     if (inputValue) {
-      sendMessage(phoneId, inputValue); 
+      sendMessage(inputValue); 
       setInputValue('');
     }
   };
@@ -23,7 +23,7 @@ const Footer = ({ phoneId, chatMessages, sendMessage, isTyping }) => {
 
   return (
     <>
-      <main>
+      <main>  
         {chatMessages.map((message, index) => (
           <div
             className="chat"

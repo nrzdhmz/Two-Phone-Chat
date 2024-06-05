@@ -11,10 +11,6 @@ const App = () => {
       const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       const newMessage = { id: id, message: message, timestamp: timestamp };
       setChatMessages([...chatMessages, newMessage]);
-      setTypingData({
-        ...typingData,
-        [id]: false,
-      });
     }
   };
 
@@ -29,17 +25,17 @@ const App = () => {
     <div className="container">
       <Phone 
         id={1} 
+        typingData={typingData}
         chatMessages={chatMessages} 
         sendMessage={(message) => sendMessage(1, message)}
-        isTyping={(isTyping) => isTypingFunc(1, isTyping)}
-        typingData={typingData}
+        isTyping={(isTyping) => isTypingFunc(1, isTyping)} 
       />
       <Phone 
         id={2} 
+        typingData={typingData}
         chatMessages={chatMessages} 
         sendMessage={(message) => sendMessage(2, message)}
-        isTyping={(isTyping) => isTypingFunc(2, isTyping)}
-        typingData={typingData}
+        isTyping={(isTyping) => isTypingFunc(2, isTyping)} 
       />
     </div>
   );

@@ -1,16 +1,14 @@
-import React from 'react'
-import Header from '../components/Header'
-import Main from '../components/Main'
-import Footer from '../components/Footer'
+import React from 'react';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
-const Phone = () => {
+const Phone = ({ id, chatMessages, sendMessage }) => {
   return (
     <section className="phone">
-      <Header/>
-      <Main/>
-      <Footer/>
+      <Header phoneId={id}/>
+      <Footer phoneId={id} chatMessages={chatMessages} sendMessage={sendMessage} />
     </section>
-  )
-}
+  );
+};
 
-export default Phone
+export default Phone;

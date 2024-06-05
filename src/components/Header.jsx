@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import avatar from '../assets/images/default.png';
 
-const Header = () => {
+const Header = ({ phoneId }) => {
   const [batteryLevel, setBatteryLevel] = useState(null);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     const getBatteryStatus = async () => {
@@ -31,6 +32,10 @@ const Header = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  useEffect(() => {
+    setUsername(phoneId === 1 ? 'Hamza' : 'Ismayil');
+  }, [phoneId]);
+
   const formatTime = (date) => {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
@@ -47,10 +52,11 @@ const Header = () => {
       </div> 
       <div className="bottom">
         <div className="left">
+          <i className="fa-solid fa-chevron-left"></i>
           <div className="avatar-container">
             <img src={avatar} alt="avatar" />
           </div>
-          <div className="username">Hamza</div>
+          <div className="username">{username}</div>
         </div>
         <div className="right">
           <i className="fa-solid fa-video"></i>

@@ -33,6 +33,13 @@ const Footer = ({ phoneId, chatMessages, sendMessage }) => {
             }}
           >
             {message.message}
+            <div className="timestamp"
+              style={{
+                color: message.id === phoneId ? '#77AA97' : '#848889',
+              }}
+            >{message.timestamp}
+            <i className="fa-solid fa-check"></i>
+            </div>
           </div>
         ))}
       </main>

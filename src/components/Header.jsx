@@ -11,7 +11,6 @@ const Header = ({ phoneId }) => {
       try {
         const battery = await navigator.getBattery();
         setBatteryLevel((battery.level * 100).toFixed(0) + '%');
-
         battery.addEventListener('levelchange', () => {
           setBatteryLevel((battery.level * 100).toFixed(0) + '%');
         });
@@ -20,14 +19,11 @@ const Header = ({ phoneId }) => {
         setBatteryLevel('?');
       }
     };
-
     getBatteryStatus();
-
     const updateTime = () => {
       setCurrentTime(new Date());
     };
-
-    const intervalId = setInterval(updateTime, 1000);
+    const intervalId = setInterval(updateTime, 20000);
 
     return () => clearInterval(intervalId);
   }, []);

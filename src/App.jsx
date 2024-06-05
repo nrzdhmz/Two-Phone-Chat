@@ -7,7 +7,8 @@ const App = () => {
 
   const sendMessage = (id, message) => {
     if (message) {
-      const newMessage = { id: id, message: message };
+      const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const newMessage = { id: id, message: message, timestamp: timestamp };
       setChatMessages([...chatMessages, newMessage]);
     }
   };
